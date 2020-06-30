@@ -84,6 +84,7 @@ In AppDelegate.cs file:
 	SelectSourceTitle = "Select source",
 	TakePhotoTitle = "Take Photo",
 	PhotoLibraryTitle = "Photo Library",
+    SelectedAction = ImageCropper.Current.TakePhotoTitle,
 	CancelButtonTitle = "Cancel",
         Success = (imageFile) =>
         {
@@ -112,6 +113,7 @@ In AppDelegate.cs file:
 * AspectRatioX
 * AspectRatioY
 * CropShape
+* SelectedAction
 * Initial image can be set in Show function.
 
 ## Contributions
