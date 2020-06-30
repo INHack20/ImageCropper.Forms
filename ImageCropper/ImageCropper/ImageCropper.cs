@@ -8,6 +8,8 @@ namespace Stormlion.ImageCropper
 {
     public class ImageCropper
     {
+        #region Properties
+        private bool IsEnableOptions { get; set; }
         public static ImageCropper Current { get; set; }
 
         public ImageCropper()
@@ -37,9 +39,11 @@ namespace Stormlion.ImageCropper
 
         public string CancelButtonTitle { get; set; } = "Cancel";
 
+        public string SelectedAction { get; set; }
+
         public Action<string> Success { get; set; }
 
-        public Action Faiure { get; set; }
+        public Action Failure { get; set; }
 
         public PickMediaOptions PickMediaOptions { get; set; } = new PickMediaOptions
         {
@@ -48,54 +52,74 @@ namespace Stormlion.ImageCropper
 
         public StoreCameraMediaOptions StoreCameraMediaOptions { get; set; } = new StoreCameraMediaOptions();
 
-        public async void Show(Page page, string imageFile = null)
+        #endregion
+
+        #region Methods
+        public void Show(Page page)
         {
-            if(imageFile == null)
+            MediaFile file = null;
+            _ = ShowAsync(page, file);
+        }
+
+        public void Show(Page page, MediaFile file)
+        {
+            _ = ShowAsync(page, file);
+        }
+
+        private async Task ShowAsync(Page page, MediaFile file)
+        {
+            if (file == null)
             {
                 await CrossMedia.Current.Initialize();
+                IsEnableOptions = string.IsNullOrEmpty(SelectedAction);
+                string action = IsEnableOptions
+                    ? await page.DisplayActionSheet(SelectSourceTitle, CancelButtonTitle, null, TakePhotoTitle, PhotoLibraryTitle)
+                    : SelectedAction;
 
-                MediaFile file;
+                if (string.IsNullOrEmpty(action))
+                {
+                    Failure?.Invoke();
+                    return;
+                }
 
-                string action = await page.DisplayActionSheet(SelectSourceTitle, CancelButtonTitle, null, TakePhotoTitle, PhotoLibraryTitle);
                 if (action == TakePhotoTitle)
                 {
                     if (!CrossMedia.Current.IsCameraAvailable || !CrossMedia.Current.IsTakePhotoSupported)
                     {
                         await page.DisplayAlert("No Camera", ":( No camera available.", "OK");
-                        Faiure?.Invoke();
+                        Failure?.Invoke();
                         return;
                     }
 
-                     file = await CrossMedia.Current.TakePhotoAsync(StoreCameraMediaOptions);
+                    file = await CrossMedia.Current.TakePhotoAsync(StoreCameraMediaOptions);
                 }
-                else if(action == PhotoLibraryTitle)
+                else if (action == PhotoLibraryTitle)
                 {
-                    if(!CrossMedia.Current.IsPickPhotoSupported)
+                    if (!CrossMedia.Current.IsPickPhotoSupported)
                     {
                         await page.DisplayAlert("Error", "This device is not supported to pick photo.", "OK");
-                        Faiure?.Invoke();
+                        Failure?.Invoke();
                         return;
                     }
                     file = await CrossMedia.Current.PickPhotoAsync(PickMediaOptions);
                 }
                 else
                 {
-                    Faiure?.Invoke();
+                    Failure?.Invoke();
                     return;
                 }
 
                 if (file == null)
                 {
-                    Faiure?.Invoke();
+                    Failure?.Invoke();
                     return;
                 }
-
-                imageFile = file.Path;
             }
 
-            // small delay
             await Task.Delay(TimeSpan.FromMilliseconds(100));
-            DependencyService.Get<IImageCropperWrapper>().ShowFromFile(this, imageFile);
+            DependencyService.Get<IImageCropperWrapper>().ShowFromFile(this, file);
         }
+
+        #endregion
     }
 }

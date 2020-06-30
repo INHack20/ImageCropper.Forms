@@ -12,22 +12,23 @@ using Xamarin.Forms;
 
 namespace Test
 {
-	public partial class MainPage : ContentPage
-	{
-		public MainPage()
-		{
-			InitializeComponent();
+    public partial class MainPage : ContentPage
+    {
+        public MainPage()
+        {
+            InitializeComponent();
 
             CrossMedia.Current.Initialize();
         }
 
-        protected async void OnClickedRectangle(object sender, EventArgs e)
+        private void OnClickedRectangle(object sender, EventArgs e)
         {
             new ImageCropper()
             {
-//                PageTitle = "Test Title",
-//                AspectRatioX = 1,
-//                AspectRatioY = 1,
+                //PageTitle = "Test Title",
+                //AspectRatioX = 1,
+                //AspectRatioY = 1,
+                SelectedAction = ImageCropper.Current.TakePhotoTitle,
                 Success = (imageFile) =>
                 {
                     Device.BeginInvokeOnMainThread(() =>
