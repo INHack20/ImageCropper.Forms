@@ -1,5 +1,5 @@
 ﻿using Foundation;
-using Stormlion.ImageCropper.iOS;
+using Xamarin.ImageCropper.iOS;
 using UIKit;
 
 namespace Test.iOS

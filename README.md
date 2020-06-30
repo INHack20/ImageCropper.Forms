@@ -38,7 +38,7 @@ Add the following to your AndroidManifest.xml inside the <application> tags:
 
 In MainActivity.cs file:
 ```cs
-    Stormlion.ImageCropper.Droid.Platform.Init();
+    Xamarin.ImageCropper.Droid.Platform.Init();
 
     global::Xamarin.Forms.Forms.Init(this, bundle);
 ```
@@ -47,7 +47,7 @@ In MainActivity.cs file:
     {
         base.OnActivityResult(requestCode, resultCode, data);
 
-        Stormlion.ImageCropper.Droid.Platform.OnActivityResult(requestCode, resultCode, data);
+        Xamarin.ImageCropper.Droid.Platform.OnActivityResult(requestCode, resultCode, data);
     }
 ```
 
@@ -56,7 +56,7 @@ In MainActivity.cs file:
 In AppDelegate.cs file:
 
 ```cs
-    Stormlion.ImageCropper.iOS.Platform.Init();
+    Xamarin.ImageCropper.iOS.Platform.Init();
 ```
 ## Usage
 
@@ -80,12 +80,12 @@ In AppDelegate.cs file:
         PageTitle = "Test Title",
         AspectRatioX = 1,
         AspectRatioY = 1,
-	CropShape = ImageCropper.CropShapeType.Oval,
-	SelectSourceTitle = "Select source",
-	TakePhotoTitle = "Take Photo",
-	PhotoLibraryTitle = "Photo Library",
-    SelectedAction = ImageCropper.Current.TakePhotoTitle,
-	CancelButtonTitle = "Cancel",
+	    CropShape = ImageCropper.CropShapeType.Oval,
+	    SelectSourceTitle = "Select source",
+	    TakePhotoTitle = "Take Photo",
+	    PhotoLibraryTitle = "Photo Library",
+	    SelectedAction = ImageCropper.Current.TakePhotoTitle,
+	    CancelButtonTitle = "Cancel",
         Success = (imageFile) =>
         {
             Device.BeginInvokeOnMainThread(() =>

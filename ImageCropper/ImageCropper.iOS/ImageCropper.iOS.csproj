@@ -8,9 +8,9 @@
     <ProjectGuid>{2798EED2-0A88-45E7-97D5-F7DCB01233E1}</ProjectGuid>
     <ProjectTypeGuids>{FEACFBD2-3405-455C-9665-78FE426C6842};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
-    <RootNamespace>Stormlion.ImageCropper.iOS</RootNamespace>
+    <RootNamespace>Xamarin.ImageCropper.iOS</RootNamespace>
     <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
-    <AssemblyName>Stormlion.ImageCropper.iOS</AssemblyName>
+    <AssemblyName>Xamarin.ImageCropper.iOS</AssemblyName>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
   </PropertyGroup>

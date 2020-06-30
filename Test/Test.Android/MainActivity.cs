@@ -3,7 +3,7 @@ using Android.Content;
 using Android.Content.PM;
 using Android.OS;
 using Plugin.Permissions;
-using Stormlion.ImageCropper.Droid;
+using Xamarin.ImageCropper.Droid;
 
 namespace Test.Droid
 {

@@ -2,8 +2,20 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <AssemblyName>Stormlion.ImageCropper</AssemblyName>
-    <RootNamespace>Stormlion.ImageCropper</RootNamespace>
+    <AssemblyName>Xamarin.ImageCropper</AssemblyName>
+    <RootNamespace>Xamarin.ImageCropper</RootNamespace>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <Copyright>Stormlion</Copyright>
+    <Company>Gazmows</Company>
+    <Authors>Felipe Chavez</Authors>
+    <RepositoryUrl>https://github.com/felipechavez/ImageCropper.Forms/</RepositoryUrl>
+    <PackageProjectUrl></PackageProjectUrl>
+    <Description>Xamarin.Forms plugin to crop and rotate photos. Forked from https://github.com/stormlion227/ImageCropper.Forms
+Supports Android and iOS.</Description>
+    <Version>1.0.0</Version>
+    <PackageId>Xamarin.ImageCropper</PackageId>
+    <Product>Xamarin.ImageCropper</Product>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <ItemGroup>

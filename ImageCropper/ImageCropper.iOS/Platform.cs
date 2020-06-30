@@ -1,7 +1,6 @@
-﻿
-using Xamarin.Forms;
+﻿using Xamarin.Forms;
 
-namespace Stormlion.ImageCropper.iOS
+namespace Xamarin.ImageCropper.iOS
 {
     public class Platform
     {
