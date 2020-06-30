@@ -1,7 +1,7 @@
 ﻿using System;
-using Com.Theartofdev.Edmodo.Cropper;
 using Android.App;
 using Android.Content;
+using Com.Theartofdev.Edmodo.Cropper;
 using Xamarin.Forms;
 
 namespace Stormlion.ImageCropper.Droid
@@ -27,7 +27,7 @@ namespace Stormlion.ImageCropper.Droid
                 }
                 else if ((int)resultCode == (int)(CropImage.CropImageActivityResultErrorCode))
                 {
-                    ImageCropper.Current.Faiure?.Invoke();
+                    ImageCropper.Current.Failure?.Invoke();
                 }
             }
         }

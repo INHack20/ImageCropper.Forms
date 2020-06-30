@@ -1,24 +1,21 @@
-﻿using Bind_TOCropViewController;
+﻿using System;
+using System.Diagnostics;
 using CoreGraphics;
 using Foundation;
 using Plugin.Media.Abstractions;
-using Stormlion.ImageCropper.iOS;
-using System;
-using System.Diagnostics;
 using UIKit;
-using Xamarin.Forms;
 
 namespace Stormlion.ImageCropper.iOS
 {
-    public class ImageCropperImplementation : IImageCropperWrapper 
+    public class ImageCropperImplementation : IImageCropperWrapper
     {
-        public void ShowFromFile(ImageCropper imageCropper, string imageFile)
+        public void ShowFromFile(ImageCropper imageCropper, MediaFile imageFile)
         {
-            UIImage image = UIImage.FromFile(imageFile);
+            UIImage image = UIImage.FromFile(imageFile.Path);
 
             TOCropViewController cropViewController;
 
-            if(imageCropper.CropShape == ImageCropper.CropShapeType.Oval)
+            if (imageCropper.CropShape == ImageCropper.CropShapeType.Oval)
             {
                 cropViewController = new TOCropViewController(TOCropViewCroppingStyle.Circular, image);
             }
@@ -27,7 +24,7 @@ namespace Stormlion.ImageCropper.iOS
                 cropViewController = new TOCropViewController(image);
             }
 
-            if(imageCropper.AspectRatioX > 0 && imageCropper.AspectRatioY > 0)
+            if (imageCropper.AspectRatioX > 0 && imageCropper.AspectRatioY > 0)
             {
                 cropViewController.AspectRatioPreset = TOCropViewControllerAspectRatioPreset.Custom;
                 cropViewController.ResetAspectRatioEnabled = false;
@@ -47,7 +44,7 @@ namespace Stormlion.ImageCropper.iOS
 
             cropViewController.OnDidFinishCancelled = (cancelled) =>
             {
-                imageCropper.Faiure?.Invoke();
+                imageCropper.Failure?.Invoke();
                 UIApplication.SharedApplication.KeyWindow.RootViewController.DismissViewController(true, null);
             };
 
@@ -76,7 +73,7 @@ namespace Stormlion.ImageCropper.iOS
             else
             {
                 Debug.WriteLine("NOT saved as " + jpgFilename + " because" + err.LocalizedDescription);
-                imageCropper.Faiure?.Invoke();
+                imageCropper.Failure?.Invoke();
             }
             UIApplication.SharedApplication.KeyWindow.RootViewController.DismissViewController(true, null);
         }
