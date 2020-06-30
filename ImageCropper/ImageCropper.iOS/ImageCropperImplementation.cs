@@ -5,7 +5,7 @@ using Foundation;
 using Plugin.Media.Abstractions;
 using UIKit;
 
-namespace Stormlion.ImageCropper.iOS
+namespace Xamarin.ImageCropper.iOS
 {
     public class ImageCropperImplementation : IImageCropperWrapper
     {

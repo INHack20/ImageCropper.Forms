@@ -1,6 +1,6 @@
 ﻿using Plugin.Media.Abstractions;
 
-namespace Stormlion.ImageCropper
+namespace Xamarin.ImageCropper
 {
     public interface IImageCropperWrapper
     {

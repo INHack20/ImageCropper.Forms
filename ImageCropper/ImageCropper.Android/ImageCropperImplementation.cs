@@ -1,9 +1,10 @@
 ﻿using Com.Theartofdev.Edmodo.Cropper;
 using Plugin.Media.Abstractions;
 using System;
+using AndroidUri = Android.Net;
 using System.Diagnostics;
 
-namespace Stormlion.ImageCropper.Droid
+namespace Xamarin.ImageCropper.Droid
 {
     public class ImageCropperImplementation : IImageCropperWrapper
     {
@@ -11,7 +12,7 @@ namespace Stormlion.ImageCropper.Droid
         {
             try
             {
-                CropImage.ActivityBuilder activityBuilder = CropImage.Activity(Android.Net.Uri.FromFile(new Java.IO.File(imageFile.Path)));
+                CropImage.ActivityBuilder activityBuilder = CropImage.Activity(AndroidUri.Uri.FromFile(new Java.IO.File(imageFile.Path)));
 
                 if (imageCropper.CropShape == ImageCropper.CropShapeType.Oval)
                 {

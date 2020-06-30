@@ -9,8 +9,8 @@
     <ProjectTypeGuids>{EFBA0AD7-5A72-4C68-AF49-83D382785DCF};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Stormlion.ImageCropper.Droid</RootNamespace>
-    <AssemblyName>Stormlion.ImageCropper.Android</AssemblyName>
+    <RootNamespace>Xamarin.ImageCropper.Droid</RootNamespace>
+    <AssemblyName>Xamarin.ImageCropper.Android</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <AndroidResgenFile>Resources\Resource.Designer.cs</AndroidResgenFile>
     <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
@@ -45,13 +45,13 @@
     <None Include="Resources\AboutResources.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ImageCropper\ImageCropper.csproj">
-      <Project>{93f1186d-ac71-47ac-a40e-b43ca82eb57b}</Project>
-      <Name>ImageCropper</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\Binding\Binding_AndroidImageCropper\Binding_AndroidImageCropper.csproj">
       <Project>{0D5DDAB1-E51D-4169-A1F5-18F2F5E27C19}</Project>
       <Name>Binding_AndroidImageCropper</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ImageCropper\ImageCropper.csproj">
+      <Project>{93f1186d-ac71-47ac-a40e-b43ca82eb57b}</Project>
+      <Name>ImageCropper</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

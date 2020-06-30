@@ -8,9 +8,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: global::Android.Runtime.ResourceDesignerAttribute("Stormlion.ImageCropper.Droid.Resource", IsApplication=false)]
+[assembly: global::Android.Runtime.ResourceDesignerAttribute("Xamarin.ImageCropper.Droid.Resource", IsApplication=false)]
 
-namespace Stormlion.ImageCropper.Droid
+namespace Xamarin.ImageCropper.Droid
 {
 	
 	

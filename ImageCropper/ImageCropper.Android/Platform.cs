@@ -4,7 +4,7 @@ using Android.Content;
 using Com.Theartofdev.Edmodo.Cropper;
 using Xamarin.Forms;
 
-namespace Stormlion.ImageCropper.Droid
+namespace Xamarin.ImageCropper.Droid
 {
     public class Platform
     {

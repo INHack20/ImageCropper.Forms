@@ -1,14 +1,7 @@
 ﻿using Plugin.Media;
-using Plugin.Media.Abstractions;
-using Stormlion.ImageCropper;
 using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Xamarin.Forms;
+using Xamarin.ImageCropper;
 
 namespace Test
 {

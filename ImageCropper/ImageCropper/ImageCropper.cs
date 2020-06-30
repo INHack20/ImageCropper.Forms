@@ -4,7 +4,7 @@ using System;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
-namespace Stormlion.ImageCropper
+namespace Xamarin.ImageCropper
 {
     public class ImageCropper
     {
