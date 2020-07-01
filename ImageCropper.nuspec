@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>Xamarin.ImageCropper</id>
-    <version>1.0.3</version>
+    <version>1.0.5</version>
     <authors>Marko Rothstein, Felipe Chavez</authors>
     <owners>Marko Rothstein</owners>
     <projectUrl>https://github.com/felipechavez/ImageCropper.Forms/</projectUrl>
@@ -22,21 +22,19 @@
         <dependency id="Xamarin.AndroidX.ExifInterface" version="1.1" />
         <dependency id="Xamarin.AndroidX.Migration" version="1.*" />
         <dependency id="Xamarin.AndroidX.AppCompat.Resources" version="1.*" />
-        <dependency id="Xamarin.AndroidX.AppCompat.Resources" version="1.*" />
+        <dependency id="Xamarin.AndroidX.Migration" version="1.*" />
       </group>
     </dependencies>
   </metadata>
   <files>
-    
+
     <file src="ImageCropper/ImageCropper/bin/Release/netstandard2.0/Xamarin.ImageCropper.dll" target="lib/netstandard2.0" />
 
     <file src="ImageCropper/ImageCropper.Android/bin/Release/Xamarin.ImageCropper.dll" target="lib/MonoAndroid" />
     <file src="ImageCropper/ImageCropper.Android/bin/Release/Binding_AndroidImageCropper.dll" target="lib/MonoAndroid" />
     <file src="ImageCropper/ImageCropper.Android/bin/Release/Xamarin.ImageCropper.Android.dll" target="lib/MonoAndroid" />
-    
 
     <file src="ImageCropper/ImageCropper.iOS/bin/Release/Xamarin.ImageCropper.dll" target="lib/Xamarin.iOS10" />
-    <file src="ImageCropper/ImageCropper.iOS/bin/Release/TOCropViewController.dll" target="lib/Xamarin.iOS10" />
     <file src="ImageCropper/ImageCropper.iOS/bin/Release/Xamarin.ImageCropper.iOS.dll" target="lib/Xamarin.iOS10" />
   </files>
 </package>

@@ -4,6 +4,7 @@ using CoreGraphics;
 using Foundation;
 using Plugin.Media.Abstractions;
 using UIKit;
+using Xamarin.TOCropView;
 
 namespace Xamarin.ImageCropper.iOS
 {

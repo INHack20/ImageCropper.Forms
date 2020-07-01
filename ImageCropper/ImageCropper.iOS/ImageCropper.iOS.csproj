@@ -48,10 +48,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Binding\TOCropViewController\TOCropViewController.csproj">
-      <Project>{c5dcb26a-02d0-4d8b-878e-c9169915c22a}</Project>
-      <Name>TOCropViewController</Name>
-    </ProjectReference>
     <ProjectReference Include="..\ImageCropper\ImageCropper.csproj">
       <Project>{93f1186d-ac71-47ac-a40e-b43ca82eb57b}</Project>
       <Name>ImageCropper</Name>
@@ -74,6 +70,9 @@
     </PackageReference>
     <PackageReference Include="Xamarin.Forms">
       <Version>4.5.0.725</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.TOCropView">
+      <Version>1.2.0</Version>
     </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
