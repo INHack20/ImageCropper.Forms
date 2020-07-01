@@ -144,10 +144,6 @@
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
-    <ProjectReference Include="..\..\Binding\TOCropViewController\TOCropViewController.csproj">
-      <Project>{c5dcb26a-02d0-4d8b-878e-c9169915c22a}</Project>
-      <Name>TOCropViewController</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\ImageCropper\ImageCropper.iOS\ImageCropper.iOS.csproj">
       <Project>{2798eed2-0a88-45e7-97d5-f7dcb01233e1}</Project>
       <Name>ImageCropper.iOS</Name>
