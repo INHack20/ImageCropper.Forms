@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>Xamarin.ImageCropper</id>
-    <version>1.0.5</version>
+    <version>1.0.6</version>
     <authors>Marko Rothstein, Felipe Chavez</authors>
     <owners>Marko Rothstein</owners>
     <projectUrl>https://github.com/felipechavez/ImageCropper.Forms/</projectUrl>
@@ -10,7 +10,7 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Xamarin.Forms plugin to crop and rotate photos.</description>
     <summary>Xamarin.Forms plugin to crop and rotate photos. Supports Android and iOS.</summary>
-    <releaseNotes>First release.</releaseNotes>
+    <releaseNotes>Update iOS nuget to the latest version of TOCropViewController.</releaseNotes>
     <copyright>© StormLion 2018</copyright>
     <tags>xamarin forms crop rotate photo image</tags>
     <dependencies>

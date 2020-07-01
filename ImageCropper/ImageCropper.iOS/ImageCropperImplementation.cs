@@ -3,8 +3,8 @@ using System.Diagnostics;
 using CoreGraphics;
 using Foundation;
 using Plugin.Media.Abstractions;
+using TimOliver.TOCropViewController.Xamarin;
 using UIKit;
-using Xamarin.TOCropView;
 
 namespace Xamarin.ImageCropper.iOS
 {
