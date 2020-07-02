@@ -12,77 +12,92 @@ namespace Xamarin.ImageCropper.iOS
     {
         public void ShowFromFile(ImageCropper imageCropper, MediaFile imageFile)
         {
-            UIImage image = UIImage.FromFile(imageFile.Path);
-
-            TOCropViewController cropViewController;
-
-            if (imageCropper.CropShape == ImageCropper.CropShapeType.Oval)
+            try
             {
-                cropViewController = new TOCropViewController(TOCropViewCroppingStyle.Circular, image);
-            }
-            else
-            {
-                cropViewController = new TOCropViewController(image);
-            }
+                UIImage image = UIImage.FromFile(imageFile.Path);
 
-            cropViewController.AspectRatioPreset = TOCropViewControllerAspectRatioPreset.Square;
-            cropViewController.ResetAspectRatioEnabled = true;
-            cropViewController.AspectRatioLockEnabled = true;
-            cropViewController.Delegate = new ImageCroppingDelegate();
+                TOCropViewController cropViewController;
 
-            if (imageCropper.AspectRatioX > 0 && imageCropper.AspectRatioY > 0)
-            {
-                cropViewController.ResetAspectRatioEnabled = false;
+                if (imageCropper.CropShape == ImageCropper.CropShapeType.Oval)
+                {
+                    cropViewController = new TOCropViewController(TOCropViewCroppingStyle.Circular, image);
+                }
+                else
+                {
+                    cropViewController = new TOCropViewController(image);
+                }
+
+                cropViewController.AspectRatioPreset = TOCropViewControllerAspectRatioPreset.Square;
+                cropViewController.ResetAspectRatioEnabled = true;
                 cropViewController.AspectRatioLockEnabled = true;
-                cropViewController.AspectRatioPreset = TOCropViewControllerAspectRatioPreset.Custom;
-                cropViewController.CustomAspectRatio = new CGSize(imageCropper.AspectRatioX, imageCropper.AspectRatioY);
+                cropViewController.Delegate = new ImageCroppingDelegate();
+
+                if (imageCropper.AspectRatioX > 0 && imageCropper.AspectRatioY > 0)
+                {
+                    cropViewController.ResetAspectRatioEnabled = false;
+                    cropViewController.AspectRatioLockEnabled = true;
+                    cropViewController.AspectRatioPreset = TOCropViewControllerAspectRatioPreset.Custom;
+                    cropViewController.CustomAspectRatio = new CGSize(imageCropper.AspectRatioX, imageCropper.AspectRatioY);
+                }
+
+                cropViewController.OnDidCropToRect = (outImage, cropRect, angle) =>
+                {
+                    outImage.CroppedImageWithFrame(cropRect, angle, false);
+                    Finalize(imageCropper, outImage);
+                };
+
+                cropViewController.OnDidCropToCircleImage = (outImage, cropRect, angle) =>
+                {
+                    outImage.CroppedImageWithFrame(cropRect, angle, true);
+                    Finalize(imageCropper, outImage);
+                };
+
+                cropViewController.OnDidFinishCancelled = (cancelled) =>
+                {
+                    imageCropper.Failure?.Invoke();
+                    UIApplication.SharedApplication.KeyWindow.RootViewController.DismissViewController(true, null);
+                };
+
+                UIApplication.SharedApplication.KeyWindow.RootViewController.PresentViewController(cropViewController, true, null);
+
+                if (!string.IsNullOrWhiteSpace(imageCropper.PageTitle) && cropViewController.TitleLabel != null)
+                {
+                    UILabel titleLabel = cropViewController.TitleLabel;
+                    titleLabel.Text = imageCropper.PageTitle;
+                }
             }
-
-            cropViewController.OnDidCropToRect = (outImage, cropRect, angle) =>
+            catch (Exception ex)
             {
-                outImage.CroppedImageWithFrame(cropRect, angle, false);
-                Finalize(imageCropper, outImage);
-            };
-
-            cropViewController.OnDidCropToCircleImage = (outImage, cropRect, angle) =>
-            {
-                outImage.CroppedImageWithFrame(cropRect, angle, true);
-                Finalize(imageCropper, outImage);
-            };
-
-            cropViewController.OnDidFinishCancelled = (cancelled) =>
-            {
-                imageCropper.Failure?.Invoke();
-                UIApplication.SharedApplication.KeyWindow.RootViewController.DismissViewController(true, null);
-            };
-
-            UIApplication.SharedApplication.KeyWindow.RootViewController.PresentViewController(cropViewController, true, null);
-
-            if (!string.IsNullOrWhiteSpace(imageCropper.PageTitle) && cropViewController.TitleLabel != null)
-            {
-                UILabel titleLabel = cropViewController.TitleLabel;
-                titleLabel.Text = imageCropper.PageTitle;
+                Debug.WriteLine(ex.Message);
             }
         }
 
         private static async void Finalize(ImageCropper imageCropper, UIImage image)
         {
-            string documentsDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
-            string jpgFilename = System.IO.Path.Combine(documentsDirectory, Guid.NewGuid().ToString() + ".jpg");
-            NSData imgData = image.AsJPEG();
-            NSError err;
+            try
+            {
+                string documentsDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
+                string jpgFilename = System.IO.Path.Combine(documentsDirectory, Guid.NewGuid().ToString() + ".jpg");
+                NSData imgData = image.AsJPEG();
+                NSError err;
 
-            await System.Threading.Tasks.Task.Delay(TimeSpan.FromMilliseconds(100));
-            if (imgData.Save(jpgFilename, false, out err))
-            {
-                imageCropper.Success?.Invoke(jpgFilename);
+                await System.Threading.Tasks.Task.Delay(TimeSpan.FromMilliseconds(100));
+                if (imgData.Save(jpgFilename, false, out err))
+                {
+                    imageCropper.Success?.Invoke(jpgFilename);
+                }
+                else
+                {
+                    Debug.WriteLine("NOT saved as " + jpgFilename + " because" + err.LocalizedDescription);
+                    imageCropper.Failure?.Invoke();
+                }
+
+                UIApplication.SharedApplication.KeyWindow.RootViewController.DismissViewController(true, null);
             }
-            else
+            catch (Exception ex)
             {
-                Debug.WriteLine("NOT saved as " + jpgFilename + " because" + err.LocalizedDescription);
-                imageCropper.Failure?.Invoke();
+                Debug.WriteLine(ex.Message);
             }
-            UIApplication.SharedApplication.KeyWindow.RootViewController.DismissViewController(true, null);
         }
     }
 }
