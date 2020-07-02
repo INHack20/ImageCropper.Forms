@@ -25,21 +25,28 @@ namespace Xamarin.ImageCropper.iOS
                 cropViewController = new TOCropViewController(image);
             }
 
+            cropViewController.AspectRatioPreset = TOCropViewControllerAspectRatioPreset.Square;
+            cropViewController.ResetAspectRatioEnabled = true;
+            cropViewController.AspectRatioLockEnabled = true;
+            cropViewController.Delegate = new ImageCroppingDelegate();
+
             if (imageCropper.AspectRatioX > 0 && imageCropper.AspectRatioY > 0)
             {
-                cropViewController.AspectRatioPreset = TOCropViewControllerAspectRatioPreset.Custom;
                 cropViewController.ResetAspectRatioEnabled = false;
                 cropViewController.AspectRatioLockEnabled = true;
+                cropViewController.AspectRatioPreset = TOCropViewControllerAspectRatioPreset.Custom;
                 cropViewController.CustomAspectRatio = new CGSize(imageCropper.AspectRatioX, imageCropper.AspectRatioY);
             }
 
             cropViewController.OnDidCropToRect = (outImage, cropRect, angle) =>
             {
+                outImage.CroppedImageWithFrame(cropRect, angle, false);
                 Finalize(imageCropper, outImage);
             };
 
             cropViewController.OnDidCropToCircleImage = (outImage, cropRect, angle) =>
             {
+                outImage.CroppedImageWithFrame(cropRect, angle, true);
                 Finalize(imageCropper, outImage);
             };
 
@@ -65,7 +72,6 @@ namespace Xamarin.ImageCropper.iOS
             NSData imgData = image.AsJPEG();
             NSError err;
 
-            // small delay
             await System.Threading.Tasks.Task.Delay(TimeSpan.FromMilliseconds(100));
             if (imgData.Save(jpgFilename, false, out err))
             {
