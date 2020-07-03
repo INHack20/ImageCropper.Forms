@@ -1,8 +1,8 @@
-# ImageCropper.Forms
+# Xamarin.ImageCropper
 
 Xamarin.Forms plugin to crop and rotate photos.
 
-[![NuGet](https://img.shields.io/nuget/v/ImageCropper.Forms.svg)](https://www.nuget.org/packages/ImageCropper.Forms/)
+[![NuGet](https://img.shields.io/nuget/v/Xamarin.ImageCropper.svg)](https://www.nuget.org/packages/Xamarin.ImageCropper/)
 
 Supports Android and iOS.
 * Android library from : https://github.com/ArthurHub/Android-Image-Cropper
@@ -80,12 +80,12 @@ In AppDelegate.cs file:
         PageTitle = "Test Title",
         AspectRatioX = 1,
         AspectRatioY = 1,
-	    CropShape = ImageCropper.CropShapeType.Oval,
-	    SelectSourceTitle = "Select source",
-	    TakePhotoTitle = "Take Photo",
-	    PhotoLibraryTitle = "Photo Library",
-	    SelectedAction = ImageCropper.Current.TakePhotoTitle,
-	    CancelButtonTitle = "Cancel",
+        CropShape = ImageCropper.CropShapeType.Oval,
+        SelectSourceTitle = "Select source",
+        TakePhotoTitle = "Take Photo",
+        PhotoLibraryTitle = "Photo Library",
+        SelectedAction = ImageCropper.Current.TakePhotoTitle,
+        CancelButtonTitle = "Cancel",
         Success = (imageFile) =>
         {
             Device.BeginInvokeOnMainThread(() =>
