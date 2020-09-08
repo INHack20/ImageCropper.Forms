@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>Xamarin.ImageCropper</id>
-    <version>1.0.6</version>
+    <version>1.0.7</version>
     <authors>Marko Rothstein, Felipe Chavez</authors>
     <owners>Marko Rothstein</owners>
     <projectUrl>https://github.com/felipechavez/ImageCropper.Forms/</projectUrl>

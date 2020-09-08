@@ -67,7 +67,7 @@
       <Version>6.0.1</Version>
     </PackageReference>
     <PackageReference Include="TimOliver.TOCropViewController.Xamarin">
-      <Version>2.5.3</Version>
+      <Version>2.5.4</Version>
     </PackageReference>
     <PackageReference Include="Xam.Plugin.Media">
       <Version>5.0.1</Version>

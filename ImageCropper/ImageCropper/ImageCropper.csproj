@@ -12,7 +12,7 @@
     <PackageProjectUrl>https://www.nuget.org/packages/Xamarin.ImageCropper/1.0.0</PackageProjectUrl>
     <Description>Xamarin.Forms plugin to crop and rotate photos. Forked from https://github.com/stormlion227/ImageCropper.Forms
 Supports Android and iOS.</Description>
-    <Version>1.0.3</Version>
+    <Version>1.0.7</Version>
     <PackageId>Xamarin.ImageCropper</PackageId>
     <Product>Xamarin.ImageCropper</Product>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
