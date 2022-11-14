@@ -1,7 +1,7 @@
-﻿using Com.Theartofdev.Edmodo.Cropper;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using System;
 using Android.Graphics;
+using Com.Canhub.Cropper;
 
 namespace Stormlion.ImageCropper.Droid
 {
@@ -11,6 +11,7 @@ namespace Stormlion.ImageCropper.Droid
         {
             try
             {
+                ActivityResultLauncher<CropImageContractOptions> cropImage; 
                 CropImage.ActivityBuilder activityBuilder = CropImage.Activity(Android.Net.Uri.FromFile(new Java.IO.File(imageFile)));
                 activityBuilder.SetCropMenuCropButtonTitle(imageCropper.CropButtonTitle);
                 activityBuilder.SetOutputCompressFormat(Bitmap.CompressFormat.Png);
