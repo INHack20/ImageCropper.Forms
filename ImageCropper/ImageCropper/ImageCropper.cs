@@ -102,7 +102,6 @@ namespace Stormlion.ImageCropper
                         return;
                     }
 
-                    //Si se capturo correctamente
                     if (file != null)
                     {
                         //Hay que copiarlo porque en iOS file.FullPath no da el path absoluto de la imagen
@@ -111,8 +110,8 @@ namespace Stormlion.ImageCropper
                         using (var stream = await file.OpenReadAsync())
                         using (var newStream = File.OpenWrite(newFile))
                             await stream.CopyToAsync(newStream);
-                    }
 
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -127,7 +126,7 @@ namespace Stormlion.ImageCropper
                 if (Device.RuntimePlatform == Device.Android)
                 {
                     //Delay for fix Xamarin.Essentials.Platform.CurrentActivity no MediaPicker
-                    await Task.Delay(TimeSpan.FromMilliseconds(2000));
+                    await Task.Delay(TimeSpan.FromMilliseconds(1000));
                 }
                 imageFile = newFile;
             }
