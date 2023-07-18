@@ -39,7 +39,6 @@ namespace Stormlion.ImageCropper.Droid
                     activityBuilder.SetActivityTitle(imageCropper.PageTitle);
                 }
 
-                //Console.WriteLine("CurrentActivity. " + Xamarin.Essentials.Platform.CurrentActivity.PackageName);
                 activityBuilder.Start(Xamarin.Essentials.Platform.CurrentActivity);
             }
             catch(Exception ex)

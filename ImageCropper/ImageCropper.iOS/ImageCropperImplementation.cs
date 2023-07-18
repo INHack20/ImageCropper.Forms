@@ -3,7 +3,9 @@ using CoreGraphics;
 using Foundation;
 using System;
 using System.Diagnostics;
+using System.IO;
 using UIKit;
+using Xamarin.Essentials;
 
 namespace Stormlion.ImageCropper.iOS
 {
@@ -61,9 +63,12 @@ namespace Stormlion.ImageCropper.iOS
 
         private static async void Finalize(ImageCropper imageCropper, UIImage image)
         {
-            string documentsDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
-            string jpgFilename = System.IO.Path.Combine(documentsDirectory, Guid.NewGuid().ToString() + ".jpg");
-            NSData imgData = image.AsJPEG();
+            string fileName = "cropper-"+Guid.NewGuid().ToString()+ ".png";
+
+            //string documentsDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
+            //string jpgFilename = System.IO.Path.Combine(documentsDirectory, Guid.NewGuid().ToString() + ".jpg");
+            string jpgFilename = Path.Combine(FileSystem.CacheDirectory, fileName);
+            NSData imgData = image.AsPNG();
             NSError err;
 
             // small delay
