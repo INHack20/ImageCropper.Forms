@@ -59,14 +59,14 @@ namespace Stormlion.ImageCropper
         public Action<ResultErrorType> Faiure { get; set; }
 
         /// <summary>
-        /// ¿Habilitar captura desde la camara?
+        /// ¿Deshabilitar captura desde la camara?
         /// </summary>
-        public bool CaptureFromCameraEnabled { get; set; } = true;
+        public bool DisableCaptureFromCamera { get; set; } = true;
 
         /// <summary>
-        /// ¿Habilitar captura desde la galeria de fotos?
+        /// ¿Deshabilitar captura desde la galeria de fotos?
         /// </summary>
-        public bool CaptureFromLibraryEnabled { get; set; } = true;
+        public bool DisableCaptureFromLibrary { get; set; } = true;
 
         /*
         public PickMediaOptions PickMediaOptions { get; set; } = new PickMediaOptions
@@ -89,11 +89,11 @@ namespace Stormlion.ImageCropper
                 string newFile = null;
 
                 List<string> enabledButtons = new List<string>();
-                if (CaptureFromCameraEnabled)
+                if (!DisableCaptureFromCamera)
                 {
                     enabledButtons.Add(TakePhotoTitle);
                 }
-                if (CaptureFromLibraryEnabled)
+                if (!DisableCaptureFromLibrary)
                 {
                     enabledButtons.Add(PhotoLibraryTitle);
                 }
