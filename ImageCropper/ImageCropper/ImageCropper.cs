@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
 using Xamarin.Essentials;
@@ -57,6 +58,16 @@ namespace Stormlion.ImageCropper
 
         public Action<ResultErrorType> Faiure { get; set; }
 
+        /// <summary>
+        /// ¿Habilitar captura desde la camara?
+        /// </summary>
+        public bool CaptureFromCameraEnabled { get; set; } = true;
+
+        /// <summary>
+        /// ¿Habilitar captura desde la galeria de fotos?
+        /// </summary>
+        public bool CaptureFromLibraryEnabled { get; set; } = true;
+
         /*
         public PickMediaOptions PickMediaOptions { get; set; } = new PickMediaOptions
         {
@@ -77,7 +88,25 @@ namespace Stormlion.ImageCropper
                 FileResult file = null;
                 string newFile = null;
 
-                string action = await page.DisplayActionSheet(SelectSourceTitle, CancelButtonTitle, null, TakePhotoTitle, PhotoLibraryTitle);
+                List<string> enabledButtons = new List<string>();
+                if (CaptureFromCameraEnabled)
+                {
+                    enabledButtons.Add(TakePhotoTitle);
+                }
+                if (CaptureFromLibraryEnabled)
+                {
+                    enabledButtons.Add(PhotoLibraryTitle);
+                }
+                if (enabledButtons.Count == 0)
+                {
+                    throw new Exception("You must enable at least one image source (CaptureFromCameraEnabled,CaptureFromLibraryEnabled).");
+                }
+                string action = enabledButtons[0];
+                if (enabledButtons.Count >= 2)
+                {
+                    action = await page.DisplayActionSheet(SelectSourceTitle, CancelButtonTitle, null, enabledButtons.ToArray());
+                }
+
                 try
                 {
                     if (action == TakePhotoTitle)
