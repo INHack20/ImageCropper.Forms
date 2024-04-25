@@ -61,12 +61,12 @@ namespace Stormlion.ImageCropper
         /// <summary>
         /// ¿Deshabilitar captura desde la camara?
         /// </summary>
-        public bool DisableCaptureFromCamera { get; set; } = true;
+        public bool DisableCaptureFromCamera { get; set; }
 
         /// <summary>
         /// ¿Deshabilitar captura desde la galeria de fotos?
         /// </summary>
-        public bool DisableCaptureFromLibrary { get; set; } = true;
+        public bool DisableCaptureFromLibrary { get; set; }
 
         /*
         public PickMediaOptions PickMediaOptions { get; set; } = new PickMediaOptions
@@ -99,7 +99,7 @@ namespace Stormlion.ImageCropper
                 }
                 if (enabledButtons.Count == 0)
                 {
-                    throw new Exception("You must enable at least one image source (CaptureFromCameraEnabled,CaptureFromLibraryEnabled).");
+                    throw new Exception("You must enable at least one image source (DisableCaptureFromCamera,DisableCaptureFromLibrary).");
                 }
                 string action = enabledButtons[0];
                 if (enabledButtons.Count >= 2)
