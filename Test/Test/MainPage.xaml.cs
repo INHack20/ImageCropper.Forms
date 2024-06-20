@@ -21,6 +21,8 @@ namespace Test
 //                PageTitle = "Test Title",
 //                AspectRatioX = 1,
 //                AspectRatioY = 1,
+                CompressImageMaxHeigth = 4000,
+                CompressImageMaxWidth = 4000,
                 Success = (imageFile) =>
                 {
                     Device.BeginInvokeOnMainThread(() =>

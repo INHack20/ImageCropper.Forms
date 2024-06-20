@@ -50,6 +50,16 @@ namespace Stormlion.ImageCropper
         public string CancelButtonTitle { get; set; } = "Cancel";
 
         /// <summary>
+        /// Comprimir imagen antes de hacer el crop (ancho)
+        /// </summary>
+        public int CompressImageMaxWidth { get; set; } = 0;
+
+        /// <summary>
+        /// Comprimir imagen antes de hacer el crop (alto)
+        /// </summary>
+        public int CompressImageMaxHeigth { get; set; } = 0;
+
+        /// <summary>
         /// Boton para realizar el recorte
         /// </summary>
         public string CropButtonTitle { get; set; } = "Crop";
@@ -137,8 +147,27 @@ namespace Stormlion.ImageCropper
                         // save the file into local storage
                         newFile = Path.Combine(FileSystem.CacheDirectory, file.FileName);
                         using (var stream = await file.OpenReadAsync())
-                        using (var newStream = File.OpenWrite(newFile))
-                            await stream.CopyToAsync(newStream);
+                        {
+                            //Comprimir aqui
+                            if (CompressImageMaxWidth > 0 || CompressImageMaxHeigth > 0)
+                            {
+                                CompressImage(newFile, stream, CompressImageMaxWidth, CompressImageMaxHeigth);
+                            }
+                            else
+                            {
+                                using (var newStream = File.OpenWrite(newFile))
+                                {
+                                    await stream.CopyToAsync(newStream);
+                                    stream.Close();
+                                    stream.Dispose();
+
+                                    newStream.Close();
+                                    newStream.Dispose();
+                                }
+                            }
+                            
+                        }
+
 
                     }
                 }
@@ -163,6 +192,38 @@ namespace Stormlion.ImageCropper
             // small delay
             await Task.Delay(TimeSpan.FromMilliseconds(100));
             DependencyService.Get<IImageCropperWrapper>().ShowFromFile(this, imageFile);
+        }
+
+        /// <summary>
+        /// Comprime una imagen
+        /// </summary>
+        /// <param name="imageFilePath"></param>
+        private void CompressImage(string imageFilePath, Stream stream, float width = 1100, float heigth = 1100)
+        {
+            byte[] imageData;
+            //FileStream stream = new FileStream(imageFilePath, FileMode.Open, FileAccess.Read);
+            using (MemoryStream ms = new MemoryStream())
+            {
+                stream.CopyTo(ms);
+                imageData = ms.ToArray();
+            }
+            stream.Close();
+            stream.Dispose();
+            byte[] resizedImage = DependencyService.Get<IImageCropperWrapper>()
+            .ResizeImage(imageData, width, heigth);
+
+            MemoryStream imageReady = new MemoryStream(resizedImage);
+            if (System.IO.File.Exists(imageFilePath))
+            {
+                System.IO.File.Delete(imageFilePath);
+            }
+            using (FileStream file = new FileStream(imageFilePath, FileMode.Create, FileAccess.Write))
+            {
+                imageReady.WriteTo(file);
+                imageReady.Close();
+                imageReady.Dispose();
+                file.Close();
+            }
         }
 
     }
