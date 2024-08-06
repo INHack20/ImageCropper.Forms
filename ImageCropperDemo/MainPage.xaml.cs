@@ -1,24 +1,56 @@
-﻿namespace ImageCropperDemo
+﻿using static Stormlion.ImageCropper.ImageCropper;
+
+namespace ImageCropperDemo
 {
+    
+
     public partial class MainPage : ContentPage
     {
-        int count = 0;
-
         public MainPage()
         {
             InitializeComponent();
         }
 
-        private void OnCounterClicked(object sender, EventArgs e)
+        protected async void OnClickedRectangle(object sender, EventArgs e)
         {
-            count++;
+            imageView.Source = null;
+            new Stormlion.ImageCropper.ImageCropper()
+            {
+                //                PageTitle = "Test Title",
+                //                AspectRatioX = 1,
+                //                AspectRatioY = 1,
+                CompressImageMaxHeigth = 4000,
+                CompressImageMaxWidth = 4000,
+                Success = (imageFile) =>
+                {
+                    Device.BeginInvokeOnMainThread(() =>
+                    {
+                        imageView.Source = ImageSource.FromFile(imageFile);
+                    });
+                },
+                Faiure = (ResultErrorType resultErrorType) => {
+                    Console.WriteLine("Error capturando la imagen o haciendo crop.");
+                }
+            }.Show(this);
+        }
 
-            if (count == 1)
-                CounterBtn.Text = $"Clicked {count} time";
-            else
-                CounterBtn.Text = $"Clicked {count} times";
-
-            SemanticScreenReader.Announce(CounterBtn.Text);
+        private void OnClickedCircle(object sender, EventArgs e)
+        {
+            imageView.Source = null;
+            new Stormlion.ImageCropper.ImageCropper()
+            {
+                CropShape = Stormlion.ImageCropper.ImageCropper.CropShapeType.Oval,
+                Success = (imageFile) =>
+                {
+                    Device.BeginInvokeOnMainThread(() =>
+                    {
+                        imageView.Source = ImageSource.FromFile(imageFile);
+                    });
+                },
+                Faiure = (ResultErrorType resultErrorType) => {
+                    Console.WriteLine("Error capturando la imagen o haciendo crop.");
+                }
+            }.Show(this);
         }
     }
 

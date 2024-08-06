@@ -12,7 +12,7 @@ namespace Stormlion.ImageCropper.Droid
             DependencyService.Register<IImageCropperWrapper, ImageCropperImplementation>();
         }
 
-        public static async void OnActivityResult(int requestCode, Result resultCode, Intent data)
+        public static async void OnActivityResult(int requestCode, Result resultCode, Intent? data)
         {
             if (requestCode == CropImage.CropImageActivityRequestCode)
             {

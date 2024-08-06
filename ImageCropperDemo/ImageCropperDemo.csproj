@@ -24,7 +24,7 @@
 		<ApplicationTitle>ImageCropperDemo</ApplicationTitle>
 
 		<!-- App Identifier -->
-		<ApplicationId>com.companyname.imagecropperdemo</ApplicationId>
+		<ApplicationId>com.stormlion.ImageCropperTest</ApplicationId>
 
 		<!-- Versions -->
 		<ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
@@ -57,6 +57,11 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Remove="Platforms\Android\Resources\values\styles.xml" />
+	  <None Remove="Platforms\Android\Resources\xml\file_paths.xml" />
+	</ItemGroup>
+
+	<ItemGroup>
 		<PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
 		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="$(MauiVersion)" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.0" />
@@ -64,6 +69,7 @@
 
 	<ItemGroup>
 	  <ProjectReference Include="..\ImageCropperLib\ImageCropperLib.csproj" />
+	  <ProjectReference Include="..\MauiBinding_AndroidImageCropper\MauiBinding_AndroidImageCropper.csproj" Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'" />
 	</ItemGroup>
 
 </Project>
