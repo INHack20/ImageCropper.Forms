@@ -6,6 +6,13 @@
     <IsBindingProject>true</IsBindingProject>
   </PropertyGroup>
 
+   <ItemGroup>
+       <NativeReference Include="NativeReferences/TOCropViewController.framework">
+           <Kind>Framework</Kind>
+          <Frameworks></Frameworks>
+    </NativeReference>
+  </ItemGroup>
+
   <ItemGroup>
     <ObjcBindingApiDefinition Include="ApiDefinition.cs" />
     <ObjcBindingCoreSource Include="StructsAndEnums.cs" />

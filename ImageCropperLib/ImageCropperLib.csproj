@@ -25,6 +25,7 @@
 
 	<ItemGroup>
 	  <ProjectReference Include="..\MauiBinding_AndroidImageCropper\MauiBinding_AndroidImageCropper.csproj" Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'" />
+	  <ProjectReference Include="..\MauiTOCropViewController\MauiTOCropViewController.csproj" Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'" />
 	</ItemGroup>
 
 </Project>
