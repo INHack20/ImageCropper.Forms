@@ -1,11 +1,16 @@
-namespace MauiTOCropViewController
+using System;
+using ObjCRuntime;
+
+namespace Bind_TOCropViewController
 {
+    [Native]
     public enum TOCropViewCroppingStyle : ulong
     {
         Default,
         Circular
     }
 
+    [Native]
     public enum TOCropViewControllerAspectRatioPreset : ulong
     {
         Original,
@@ -19,6 +24,7 @@ namespace MauiTOCropViewController
         Custom
     }
 
+    [Native]
     public enum TOCropViewControllerToolbarPosition : ulong
     {
         Bottom,

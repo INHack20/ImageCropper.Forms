@@ -2,9 +2,10 @@ using System;
 using CoreGraphics;
 using Foundation;
 using ObjCRuntime;
+using Bind_TOCropViewController;
 using UIKit;
 
-namespace MauiTOCropViewController
+namespace Bind_TOCropViewController
 {
 
     // The first step to creating a binding is to add your native framework ("MyLibrary.xcframework")

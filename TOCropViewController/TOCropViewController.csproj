@@ -1,20 +1,24 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>net8.0-ios</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>true</ImplicitUsings>
     <IsBindingProject>true</IsBindingProject>
-  </PropertyGroup>
 
-   <ItemGroup>
-       <NativeReference Include="NativeReferences/TOCropViewController.framework">
-           <Kind>Framework</Kind>
-          <Frameworks></Frameworks>
-    </NativeReference>
-  </ItemGroup>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <NoBindingEmbedding>false</NoBindingEmbedding>
+  </PropertyGroup>
 
   <ItemGroup>
     <ObjcBindingApiDefinition Include="ApiDefinition.cs" />
     <ObjcBindingCoreSource Include="StructsAndEnums.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <NativeReference Include="TOCropViewController.framework">
+      <Kind>Framework</Kind>
+      <Frameworks></Frameworks>
+    </NativeReference>
+  </ItemGroup>
+ 
+  
 </Project>
