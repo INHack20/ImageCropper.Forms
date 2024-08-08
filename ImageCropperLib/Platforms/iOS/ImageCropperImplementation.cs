@@ -17,7 +17,7 @@ namespace Stormlion.ImageCropper.iOS
 
             if(imageCropper.CropShape == ImageCropper.CropShapeType.Oval)
             {
-                cropViewController = new TOCropViewController.TOCropViewController(TOCropViewCroppingStyle.Circular, image);
+                cropViewController = new TOCropViewController(TOCropViewCroppingStyle.Circular, image);
             }
             else
             {

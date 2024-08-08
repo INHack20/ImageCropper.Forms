@@ -18,6 +18,14 @@
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'tizen'">6.5</SupportedOSPlatformVersion>
 	</PropertyGroup>
 
+  <ItemGroup>
+    <NativeReference Include="Platforms\iOS\Native References\TOCropViewController.framework">
+      <Kind>Framework</Kind>
+      <SmartLink>True</SmartLink>
+      <Frameworks></Frameworks>
+    </NativeReference>
+  </ItemGroup>
+
 	<ItemGroup>
 		<PackageReference Include="Microsoft.Maui.Controls" Version="8.0.71" />
 		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="8.0.71" />
@@ -25,10 +33,16 @@
 
 	<ItemGroup>
     <ProjectReference Include="..\MauiBinding_AndroidImageCropper\MauiBinding_AndroidImageCropper.csproj" Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'" />
-    <ProjectReference Include="..\TOCropViewController\TOCropViewController.csproj" Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'" />
+    <ProjectReference Include="..\TOCropViewController\TOCropViewController.csproj" Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">
+      <CopyLocalSatelliteAssemblies></CopyLocalSatelliteAssemblies>
+      <Private>True</Private>
+    </ProjectReference>
   </ItemGroup>
 
 	<ItemGroup Condition="'$(TargetFramework)' == 'net8.0-android'">
+	  <PackageReference Include="Xamarin.AndroidX.AppCompat">
+	    <Version>1.7.0.1</Version>
+	  </PackageReference>
 	  <PackageReference Include="Xamarin.AndroidX.ExifInterface">
 	    <Version>1.3.7.5</Version>
 	  </PackageReference>

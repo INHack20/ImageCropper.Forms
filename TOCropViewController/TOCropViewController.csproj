@@ -6,7 +6,7 @@
     <IsBindingProject>true</IsBindingProject>
 
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-    <NoBindingEmbedding>false</NoBindingEmbedding>
+    <NoBindingEmbedding>true</NoBindingEmbedding>
   </PropertyGroup>
 
   <ItemGroup>
@@ -14,11 +14,13 @@
     <ObjcBindingCoreSource Include="StructsAndEnums.cs" />
   </ItemGroup>
   <ItemGroup>
-    <NativeReference Include="TOCropViewController.framework">
+    <NativeReference Include="Native References\TOCropViewController.framework">
       <Kind>Framework</Kind>
+      <ForceLoad>True</ForceLoad>
+      <SmartLink>True</SmartLink>
       <Frameworks></Frameworks>
     </NativeReference>
   </ItemGroup>
- 
+  
   
 </Project>
