@@ -1,7 +1,7 @@
 //
 //  TOCropToolbar.h
 //
-//  Copyright 2015-2024 Timothy Oliver. All rights reserved.
+//  Copyright 2015-2018 Timothy Oliver. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to
@@ -22,14 +22,6 @@
 
 #import <UIKit/UIKit.h>
 
-#if !__has_include(<TOCropViewController/TOCropViewConstants.h>)
-#import "TOCropViewConstants.h"
-#else
-#import <TOCropViewController/TOCropViewConstants.h>
-#endif
-
-NS_ASSUME_NONNULL_BEGIN
-
 @interface TOCropToolbar : UIView
 
 /* In horizontal mode, offsets all of the buttons vertically by height of status bar. */
@@ -40,28 +32,24 @@ NS_ASSUME_NONNULL_BEGIN
 
 /* The 'Done' buttons to commit the crop. The text button is displayed
  in portrait mode and the icon one, in landscape. */
-@property (nonatomic, strong, readonly) UIButton *doneTextButton;
-@property (nonatomic, strong, readonly) UIButton *doneIconButton;
-@property (nonatomic, copy) NSString *doneTextButtonTitle;
-@property (null_resettable, nonatomic, copy) UIColor *doneButtonColor;
+@property (nonnull, nonatomic, strong, readonly) UIButton *doneTextButton;
+@property (nonnull, nonatomic, strong, readonly) UIButton *doneIconButton;
+@property (nonnull, nonatomic, copy) NSString *doneTextButtonTitle;
+
 
 /* The 'Cancel' buttons to cancel the crop. The text button is displayed
  in portrait mode and the icon one, in landscape. */
-@property (nonatomic, strong, readonly) UIButton *cancelTextButton;
-@property (nonatomic, strong, readonly) UIButton *cancelIconButton;
-@property (nonatomic, readonly) UIView *visibleCancelButton;
-@property (nonatomic, copy) NSString *cancelTextButtonTitle;
-@property (nullable, nonatomic, copy) UIColor *cancelButtonColor;
-
-@property (nonatomic, assign) BOOL showOnlyIcons;
+@property (nonnull, nonatomic, strong, readonly) UIButton *cancelTextButton;
+@property (nonnull, nonatomic, strong, readonly) UIButton *cancelIconButton;
+@property (nonnull, nonatomic, copy) NSString *cancelTextButtonTitle;
 
 /* The cropper control buttons */
-@property (nonatomic, strong, readonly)  UIButton *rotateCounterclockwiseButton;
-@property (nonatomic, strong, readonly)  UIButton *resetButton;
-@property (nonatomic, strong, readonly)  UIButton *clampButton;
+@property (nonnull, nonatomic, strong, readonly)  UIButton *rotateCounterclockwiseButton;
+@property (nonnull, nonatomic, strong, readonly)  UIButton *resetButton;
+@property (nonnull, nonatomic, strong, readonly)  UIButton *clampButton;
 @property (nullable, nonatomic, strong, readonly) UIButton *rotateClockwiseButton;
 
-@property (nonatomic, readonly) UIButton *rotateButton; // Points to `rotateCounterClockwiseButton`
+@property (nonnull, nonatomic, readonly) UIButton *rotateButton; // Points to `rotateCounterClockwiseButton`
 
 /* Button feedback handler blocks */
 @property (nullable, nonatomic, copy) void (^cancelButtonTapped)(void);
@@ -79,12 +67,6 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign) BOOL clampButtonHidden;
 @property (nonatomic, assign) BOOL rotateCounterclockwiseButtonHidden;
 @property (nonatomic, assign) BOOL rotateClockwiseButtonHidden;
-@property (nonatomic, assign) BOOL resetButtonHidden;
-@property (nonatomic, assign) BOOL doneButtonHidden;
-@property (nonatomic, assign) BOOL cancelButtonHidden;
-
-/* For languages like Arabic where they natively present content flipped from English */
-@property (nonatomic, assign) BOOL reverseContentLayout;
 
 /* Enable the reset button */
 @property (nonatomic, assign) BOOL resetButtonEnabled;
@@ -92,6 +74,5 @@ NS_ASSUME_NONNULL_BEGIN
 /* Done button frame for popover controllers */
 @property (nonatomic, readonly) CGRect doneButtonFrame;
 
-@end
 
-NS_ASSUME_NONNULL_END
+@end
