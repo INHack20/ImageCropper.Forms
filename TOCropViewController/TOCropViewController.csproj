@@ -4,21 +4,18 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>true</ImplicitUsings>
     <IsBindingProject>true</IsBindingProject>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <NoBindingEmbedding>true</NoBindingEmbedding>
   </PropertyGroup>
-
   <ItemGroup>
     <ObjcBindingApiDefinition Include="ApiDefinition.cs" />
     <ObjcBindingCoreSource Include="Structs.cs" />
   </ItemGroup>
-  
   <ItemGroup>
-    <NativeReference Include="Native References\TOCropViewController.framework">
+    <NativeReference Include="NativeLibraries\TOCropViewController.framework">
       <Kind>Framework</Kind>
       <ForceLoad>True</ForceLoad>
-      <SmartLink>True</SmartLink>
-      <Frameworks></Frameworks>
+      <SmartLink>False</SmartLink>
     </NativeReference>
   </ItemGroup>
-  
-  
 </Project>

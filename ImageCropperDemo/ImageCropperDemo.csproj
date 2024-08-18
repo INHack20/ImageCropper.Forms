@@ -70,7 +70,6 @@
 	<ItemGroup>
 	  <ProjectReference Include="..\ImageCropperLib\ImageCropperLib.csproj" />
 	  <ProjectReference Include="..\MauiBinding_AndroidImageCropper\MauiBinding_AndroidImageCropper.csproj" Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'" />
-	  <ProjectReference Include="..\TOCropViewController\TOCropViewController.csproj" />
 	</ItemGroup>
 
 </Project>
