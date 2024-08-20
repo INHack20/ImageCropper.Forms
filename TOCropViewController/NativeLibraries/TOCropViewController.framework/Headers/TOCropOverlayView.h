@@ -1,7 +1,7 @@
 //
-//  UIImage+CropRotate.h
+//  TOCropOverlayView.h
 //
-//  Copyright 2015-2018 Timothy Oliver. All rights reserved.
+//  Copyright 2015-2024 Timothy Oliver. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to
@@ -22,8 +22,22 @@
 
 #import <UIKit/UIKit.h>
 
-@interface UIImage (CropRotate)
+NS_ASSUME_NONNULL_BEGIN
 
--(nonnull UIImage *)croppedImageWithFrame:(CGRect)frame angle:(NSInteger)angle circularClip:(BOOL)circular;
+@interface TOCropOverlayView : UIView
+
+/** Hides the interior grid lines, sans animation. */
+@property (nonatomic, assign) BOOL gridHidden;
+
+/** Add/Remove the interior horizontal grid lines. */
+@property (nonatomic, assign) BOOL displayHorizontalGridLines;
+
+/** Add/Remove the interior vertical grid lines. */
+@property (nonatomic, assign) BOOL displayVerticalGridLines;
+
+/** Shows and hides the interior grid lines with an optional crossfade animation. */
+- (void)setGridHidden:(BOOL)hidden animated:(BOOL)animated;
 
 @end
+
+NS_ASSUME_NONNULL_END

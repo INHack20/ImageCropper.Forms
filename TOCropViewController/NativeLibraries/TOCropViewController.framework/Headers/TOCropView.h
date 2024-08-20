@@ -1,7 +1,7 @@
 //
 //  TOCropView.h
 //
-//  Copyright 2015-2018 Timothy Oliver. All rights reserved.
+//  Copyright 2015-2024 Timothy Oliver. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to
@@ -22,16 +22,18 @@
 
 #import <UIKit/UIKit.h>
 
+#if !__has_include(<TOCropViewController/TOCropViewConstants.h>)
+#import "TOCropViewConstants.h"
+#else
+#import <TOCropViewController/TOCropViewConstants.h>
+#endif
+
 @class TOCropOverlayView;
-
-typedef NS_ENUM(NSInteger, TOCropViewCroppingStyle) {
-    TOCropViewCroppingStyleDefault,     // The regular, rectangular crop box
-    TOCropViewCroppingStyleCircular     // A fixed, circular crop box
-};
-
 @class TOCropView;
 
-@protocol TOCropViewDelegate <NSObject>
+NS_ASSUME_NONNULL_BEGIN
+
+@protocol TOCropViewDelegate<NSObject>
 
 - (void)cropViewDidBecomeResettable:(nonnull TOCropView *)cropView;
 - (void)cropViewDidBecomeNonResettable:(nonnull TOCropView *)cropView;
@@ -51,9 +53,19 @@ typedef NS_ENUM(NSInteger, TOCropViewCroppingStyle) {
 @property (nonatomic, assign, readonly) TOCropViewCroppingStyle croppingStyle;
 
 /**
+ A semi-transparent grey view, overlaid on top of the background image
+ */
+@property (nonatomic, strong, readonly) UIView *overlayView;
+
+/**
  A grid view overlaid on top of the foreground image view's container.
  */
 @property (nonnull, nonatomic, strong, readonly) TOCropOverlayView *gridOverlayView;
+
+/**
+ A container view that clips the a copy of the image so it appears over the dimming view
+ */
+@property (nonnull, nonatomic, readonly) UIView *foregroundContainerView;
 
 /**
  A delegate object that receives notifications from the crop view
@@ -108,7 +120,9 @@ typedef NS_ENUM(NSInteger, TOCropViewCroppingStyle) {
 @property (nonatomic, assign) BOOL aspectRatioLockEnabled;
 
 /**
- If true, a custom aspect ratio is set, and the aspectRatioLockEnabled is set to YES, the crop box will swap it's dimensions depending on portrait or landscape sized images.  This value also controls whether the dimensions can swap when the image is rotated.
+ If true, a custom aspect ratio is set, and the aspectRatioLockEnabled is set to YES,
+ the crop box will swap it's dimensions depending on portrait or landscape sized images.
+ This value also controls whether the dimensions can swap when the image is rotated.
  
  Default is NO.
  */
@@ -156,9 +170,42 @@ typedef NS_ENUM(NSInteger, TOCropViewCroppingStyle) {
 @property (nonatomic) NSTimeInterval cropAdjustingDelay;
 
 /**
-The minimum croping aspect ratio. If set, user is prevented from setting cropping rectangle to lower aspect ratio than defined by the parameter.
+The minimum croping aspect ratio. If set, user is prevented from setting cropping
+ rectangle to lower aspect ratio than defined by the parameter.
 */
 @property (nonatomic, assign) CGFloat minimumAspectRatio;
+
+/**
+ The maximum scale that user can apply to image by pinching to zoom. Small values
+ are only recomended with aspectRatioLockEnabled set to true. Default to 15.0
+ */
+@property (nonatomic, assign) CGFloat maximumZoomScale;
+
+/**
+ Always show the cropping grid lines, even when the user isn't interacting.
+ This also disables the fading animation.
+ (Default is NO)
+ */
+@property (nonatomic, assign) BOOL alwaysShowCroppingGrid;
+
+/**
+ Permanently hides the translucency effect covering the outside bounds of the
+ crop box. (Default is NO)
+ */
+@property (nonatomic, assign) BOOL translucencyAlwaysHidden;
+
+///*
+// if YES it will always show grid
+// if NO it will never show grid
+// NOTE : Do not use this method if you want to keep grid hide/show animation
+// */
+//- (void)setAlwaysShowGrid:(BOOL)showGrid;
+//
+///*
+// if YES it will disable translucency effect
+// */
+//- (void)setTranslucencyOff:(BOOL)disableTranslucency;
+
 
 /**
  Create a default instance of the crop view with the supplied image
@@ -250,3 +297,5 @@ The minimum croping aspect ratio. If set, user is prevented from setting croppin
 - (void)moveCroppedContentToCenterAnimated:(BOOL)animated;
 
 @end
+
+NS_ASSUME_NONNULL_END
