@@ -38,12 +38,6 @@
 
     <ItemGroup Condition="'$(TargetFramework)' == 'net8.0-android'">
       <ProjectReference Include="..\MauiBinding_AndroidImageCropper\MauiBinding_AndroidImageCropper.csproj" />
-			<PackageReference Include="Xamarin.AndroidX.AppCompat">
-				<Version>1.7.0.1</Version>
-			</PackageReference>
-			<PackageReference Include="Xamarin.AndroidX.ExifInterface">
-				<Version>1.3.7.5</Version>
-			</PackageReference>
 	</ItemGroup>
 
 </Project>
