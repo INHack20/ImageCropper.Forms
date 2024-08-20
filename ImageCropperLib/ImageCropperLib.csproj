@@ -33,11 +33,11 @@
 	</ItemGroup>
 
   <ItemGroup Condition="'$(TargetFramework)' == 'net8.0-ios'">
-    <ProjectReference Include="..\TOCropViewController\TOCropViewController.csproj" />
+    <ProjectReference Include="..\Binding\TOCropViewController\TOCropViewController.csproj" />
   </ItemGroup>
 
     <ItemGroup Condition="'$(TargetFramework)' == 'net8.0-android'">
-      <ProjectReference Include="..\MauiBinding_AndroidImageCropper\MauiBinding_AndroidImageCropper.csproj" />
+      <ProjectReference Include="..\Binding\MauiBinding_AndroidImageCropper\MauiBinding_AndroidImageCropper.csproj" />
 	</ItemGroup>
 
 </Project>
