@@ -6,38 +6,33 @@
     <authors>Marko Rothstein</authors>
     <owners>Marko Rothstein</owners>
     <projectUrl>https://github.com/INHack20/ImageCropper.Forms</projectUrl>
-    <license type="file">LICENSE.md</license>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Xamarin.Forms plugin to crop and rotate photos.</description>
     <summary>Xamarin.Forms plugin to crop and rotate photos. Supports Android and iOS.</summary>
     <releaseNotes>First release.</releaseNotes>
     <copyright>© StormLion 2018</copyright>
-    <tags>xamarin forms crop rotate photo image</tags>
+    <tags>maui forms crop rotate photo image</tags>
     <dependencies>
-      <group targetFramework=".NETStandard2.0">
-        <dependency id="Xamarin.Forms" version="5.*"/>
-        <dependency id="Xamarin.Essentials" version="1.8.*" />
+      <group targetFramework="net8.0">
+        <dependency id="Microsoft.Maui.Controls" version="8.0.70" exclude="Build,Analyzers" />
       </group>
-      <group targetFramework="MonoAndroid10.0">
-        <dependency id="Xamarin.AndroidX.ExifInterface" version="1.3.*" />
-        <dependency id="Xamarin.AndroidX.Migration" version="1.*" />
+      <group targetFramework="net8.0-android34.0">
+        <dependency id="Microsoft.Maui.Controls" version="8.0.70" exclude="Build,Analyzers" />
       </group>
-      <group targetFramework="Xamarin.iOS1.0">
+      <group targetFramework="net8.0-ios17.2">
+        <dependency id="Microsoft.Maui.Controls" version="8.0.70" exclude="Build,Analyzers" />
       </group>
     </dependencies>
   </metadata>
   <files>
     <file src="LICENSE.md" target="" />
 
-    <file src="ImageCropper/ImageCropper/bin/Release/netstandard2.0/Stormlion.ImageCropper.dll" target="lib/netstandard2.0" />
 
-    <file src="ImageCropper/ImageCropper.Android/bin/Release/Stormlion.ImageCropper.dll" target="lib/MonoAndroid10.0" />
-    <file src="ImageCropper/ImageCropper.Android/bin/Release/Binding_AndroidImageCropper.dll" target="lib/MonoAndroid10.0" />
-    <file src="ImageCropper/ImageCropper.Android/bin/Release/Stormlion.ImageCropper.Android.dll" target="lib/MonoAndroid10.0" />
+    <file src="ImageCropperLib/bin/Release/net8.0-android/ImageCropperLib.dll" target="lib/net8.0-android34.0" />
+    <file src="ImageCropperLib/bin/Release/net8.0-android/MauiBinding_AndroidImageCropper.dll" target="lib/net8.0-android34.0" />
     
 
-    <file src="ImageCropper/ImageCropper.iOS/bin/Release/Stormlion.ImageCropper.dll" target="lib/Xamarin.iOS10" />
-    <file src="ImageCropper/ImageCropper.iOS/bin/Release/TOCropViewController.dll" target="lib/Xamarin.iOS10" />
-    <file src="ImageCropper/ImageCropper.iOS/bin/Release/Stormlion.ImageCropper.iOS.dll" target="lib/Xamarin.iOS10" />
+    <file src="ImageCropperLib/bin/Release/net8.0-ios/ImageCropperLib.dll" target="lib/net8.0-ios17.2" />
+    <file src="ImageCropperLib/bin/Release/net8.0-ios/TOCropViewController.dll" target="lib/net8.0-ios17.2" />
   </files>
 </package>
