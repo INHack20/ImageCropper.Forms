@@ -10,7 +10,7 @@
     <ObjcBindingCoreSource Include="StructsAndEnums.cs" />
   </ItemGroup>
   <ItemGroup>
-    <NativeReference Include="NativeLibraries\TOCropViewController.framework">
+    <NativeReference Include="TOCropViewController.xcframework">
       <Kind>Framework</Kind>
       <ForceLoad>True</ForceLoad>
       <SmartLink>True</SmartLink>
