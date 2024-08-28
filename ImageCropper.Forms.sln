@@ -14,9 +14,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ImageCropperLib", "ImageCro
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Binding", "Binding", "{0A692B80-E65C-4BE0-9981-1577AC4AD9DD}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Maui.Droid.ImageCropper", "Binding\MauiBinding_AndroidImageCropper\Maui.Droid.ImageCropper.csproj", "{1DDAA75E-3387-4C25-B2FC-88CD7F5648A6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TR.Maui.Droid.ImageCropper", "Binding\MauiBinding_AndroidImageCropper\TR.Maui.Droid.ImageCropper.csproj", "{1DDAA75E-3387-4C25-B2FC-88CD7F5648A6}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Maui.iOS.TOCropView", "Binding\TOCropViewController\Maui.iOS.TOCropView.csproj", "{825E448C-D3F6-4091-8EB8-24662DDE934F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TR.Maui.iOS.TOCropView", "Binding\TOCropViewController\TR.Maui.iOS.TOCropView.csproj", "{825E448C-D3F6-4091-8EB8-24662DDE934F}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ImageCropperDemo", "ImageCropperDemo\ImageCropperDemo.csproj", "{3CE4F349-65CA-4D67-80AD-05E2767579B4}"
 EndProject

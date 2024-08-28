@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFrameworks>net8.0;net8.0-android;net8.0-ios;net8.0-maccatalyst</TargetFrameworks>
+		<TargetFrameworks>net8.0-android;net8.0-ios;net8.0-maccatalyst</TargetFrameworks>
 		<TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net8.0-windows10.0.19041.0</TargetFrameworks>
 		<!-- Uncomment to also build the tizen app. You will need to install tizen by following this: https://github.com/Samsung/Tizen.NET -->
 		<!-- <TargetFrameworks>$(TargetFrameworks);net8.0-tizen</TargetFrameworks> -->
@@ -19,8 +19,28 @@
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'tizen'">6.5</SupportedOSPlatformVersion>
 		<PackageId>ImageCropper.Forms.Fix.v2</PackageId>
 		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-		<Version>2.0.5</Version>
+		<Version>2.0.7</Version>
+		<Description>.NET MAUI plugin to crop and rotate photos.</Description>
+		<Title>ImageCropper.Maui</Title>
+		<Authors>inhack20</Authors>
+		<Copyright>StormLion 2018</Copyright>
+		<PackageProjectUrl>https://github.com/INHack20/ImageCropper.Forms</PackageProjectUrl>
+		<RepositoryUrl>https://github.com/INHack20/ImageCropper.Forms</RepositoryUrl>
+		<PackageTags>maui forms crop rotate photo image</PackageTags>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
+		<PackageLicenseFile>LICENSE.md</PackageLicenseFile>
 	</PropertyGroup>
+
+	<ItemGroup>
+	  <None Include="..\LICENSE.md">
+	    <Pack>True</Pack>
+	    <PackagePath>\</PackagePath>
+	  </None>
+	  <None Include="..\README.md">
+	    <Pack>True</Pack>
+	    <PackagePath>\</PackagePath>
+	  </None>
+	</ItemGroup>
 
 	<ItemGroup>
 		<PackageReference Include="Microsoft.Maui.Controls" Version="8.0.71" />
@@ -28,11 +48,11 @@
 	</ItemGroup>
 
   <ItemGroup Condition="'$(TargetFramework)' == 'net8.0-ios'">
-    <ProjectReference Include="..\Binding\TOCropViewController\Maui.iOS.TOCropView.csproj" />
+    <ProjectReference Include="..\Binding\TOCropViewController\TR.Maui.iOS.TOCropView.csproj" />
   </ItemGroup>
 
     <ItemGroup Condition="'$(TargetFramework)' == 'net8.0-android'">
-      <ProjectReference Include="..\Binding\MauiBinding_AndroidImageCropper\Maui.Droid.ImageCropper.csproj" />
+      <ProjectReference Include="..\Binding\MauiBinding_AndroidImageCropper\TR.Maui.Droid.ImageCropper.csproj" />
 	</ItemGroup>
 
 </Project>

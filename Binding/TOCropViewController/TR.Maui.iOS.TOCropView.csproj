@@ -4,7 +4,7 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>true</ImplicitUsings>
     <IsBindingProject>true</IsBindingProject>
-    <AssemblyVersion>1.0.0</AssemblyVersion>
+    <AssemblyVersion>1.0.1</AssemblyVersion>
     <FileVersion>$(AssemblyVersion)</FileVersion>
     <Version>$(AssemblyVersion)</Version>
     <Title>TOCropViewController</Title>
@@ -13,6 +13,11 @@
     <Description>.NET MAUI iOS Bindings for TOCropViewController</Description>
     <PackageId>$(AssemblyName)</PackageId>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <Copyright>inhack20</Copyright>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageTags>maui ios tocropview image cropper</PackageTags>
+    <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
+    <PackageOutputPath>$(MSBuildThisFileDirectory)../../</PackageOutputPath>
   </PropertyGroup>
   
   <ItemGroup>
@@ -32,6 +37,17 @@
       <ForceLoad>False</ForceLoad>
       <SmartLink>False</SmartLink>
     </NativeReference>
+  </ItemGroup>
+  
+  <ItemGroup>
+    <None Include="..\..\LICENSE.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+    <None Include="..\..\README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
   </ItemGroup>
   
   
