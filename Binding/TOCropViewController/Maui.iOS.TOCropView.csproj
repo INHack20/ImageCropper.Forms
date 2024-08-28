@@ -4,18 +4,28 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>true</ImplicitUsings>
     <IsBindingProject>true</IsBindingProject>
-    <AssemblyVersion>1.0.1</AssemblyVersion>
+    <AssemblyVersion>1.0.0</AssemblyVersion>
     <FileVersion>$(AssemblyVersion)</FileVersion>
     <Version>$(AssemblyVersion)</Version>
     <Title>TOCropViewController</Title>
-    <RepositoryUrl>https://github.com/xxx/ImageCropper.Maui</RepositoryUrl>
-    <PackageProjectUrl>https://github.com/xxx/ImageCropper.Maui</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/INHack20/ImageCropper.Forms</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/INHack20/ImageCropper.Forms</PackageProjectUrl>
     <Description>.NET MAUI iOS Bindings for TOCropViewController</Description>
+    <PackageId>$(AssemblyName)</PackageId>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
   </PropertyGroup>
+  
   <ItemGroup>
     <ObjcBindingApiDefinition Include="ApiDefinitions.cs" />
     <ObjcBindingCoreSource Include="StructsAndEnums.cs" />
   </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="TOCropViewController.xcframework/**" Pack="true" PackagePath="lib/$(TargetFramework)$(SupportedOSPlatformVersion)/TOCropViewController.xcframework">
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+    </Content>
+  </ItemGroup>
+  
   <ItemGroup>
     <NativeReference Include="TOCropViewController.xcframework">
       <Kind>Framework</Kind>
@@ -23,4 +33,6 @@
       <SmartLink>False</SmartLink>
     </NativeReference>
   </ItemGroup>
+  
+  
 </Project>
