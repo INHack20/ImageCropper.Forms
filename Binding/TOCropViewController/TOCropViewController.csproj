@@ -4,6 +4,13 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>true</ImplicitUsings>
     <IsBindingProject>true</IsBindingProject>
+    <AssemblyVersion>1.0.1</AssemblyVersion>
+    <FileVersion>$(AssemblyVersion)</FileVersion>
+    <Version>$(AssemblyVersion)</Version>
+    <Title>TOCropViewController</Title>
+    <RepositoryUrl>https://github.com/xxx/ImageCropper.Maui</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/xxx/ImageCropper.Maui</PackageProjectUrl>
+    <Description>.NET MAUI iOS Bindings for TOCropViewController</Description>
   </PropertyGroup>
   <ItemGroup>
     <ObjcBindingApiDefinition Include="ApiDefinitions.cs" />
@@ -12,8 +19,8 @@
   <ItemGroup>
     <NativeReference Include="TOCropViewController.xcframework">
       <Kind>Framework</Kind>
-      <ForceLoad>True</ForceLoad>
-      <SmartLink>True</SmartLink>
+      <ForceLoad>False</ForceLoad>
+      <SmartLink>False</SmartLink>
     </NativeReference>
   </ItemGroup>
 </Project>
