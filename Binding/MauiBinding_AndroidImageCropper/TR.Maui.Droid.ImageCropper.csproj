@@ -14,6 +14,7 @@
     <Description>Libreria cropper para Maui</Description>
     <AssemblyVersion>1.0.1</AssemblyVersion>
     <Version>$(AssemblyVersion)</Version>
+    <PackageOutputPath>$(MSBuildThisFileDirectory)../../Nugets</PackageOutputPath>
   </PropertyGroup>
   <ItemGroup>
     <None Include="..\..\LICENSE.md">
