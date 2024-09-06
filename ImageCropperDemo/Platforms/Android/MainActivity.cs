@@ -2,7 +2,6 @@
 using Android.Content;
 using Android.Content.PM;
 using Android.OS;
-using Stormlion.ImageCropper.Droid;
 using Platform = Stormlion.ImageCropper.Droid.Platform;
 
 namespace ImageCropperDemo
