@@ -1,5 +1,5 @@
 # ImageCropper.Forms
-
+Bind_TOCropViewController
 .NET MAUI plugin to crop and rotate photos.
 
 [![NuGet](https://img.shields.io/nuget/v/ImageCropper.Forms.svg)](https://www.nuget.org/packages/ImageCropper.Forms/)
