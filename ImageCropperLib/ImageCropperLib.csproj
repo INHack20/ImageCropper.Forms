@@ -19,7 +19,7 @@
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'tizen'">6.5</SupportedOSPlatformVersion>
 		<PackageId>ImageCropper.Forms.Fix.v2</PackageId>
 		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-		<Version>2.0.9</Version>
+		<Version>2.0.10</Version>
 		<Description>.NET MAUI plugin to crop and rotate photos.</Description>
 		<Title>ImageCropper.Maui</Title>
 		<Authors>inhack20</Authors>
