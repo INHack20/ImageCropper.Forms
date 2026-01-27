@@ -14,25 +14,25 @@
     <tags>maui forms crop rotate photo image</tags>
     <dependencies>
       <group targetFramework="net8.0">
-        <dependency id="Microsoft.Maui.Controls" version="8.0.70" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.Maui.Controls" version="10.0.30" exclude="Build,Analyzers" />
       </group>
       <group targetFramework="net8.0-android34.0">
-        <dependency id="Microsoft.Maui.Controls" version="8.0.70" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.Maui.Controls" version="10.0.30" exclude="Build,Analyzers" />
       </group>
       <group targetFramework="net8.0-ios17.2">
-        <dependency id="Microsoft.Maui.Controls" version="8.0.70" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.Maui.Controls" version="10.0.30" exclude="Build,Analyzers" />
       </group>
     </dependencies>
   </metadata>
   <files>
     <file src="LICENSE.md" target="" />
 
-    <file src="ImageCropperLib/bin/Release/net8.0/ImageCropperLib.dll" target="lib/net8.0" />
+    <file src="ImageCropperLib/bin/Release/net10.0/ImageCropperLib.dll" target="lib/net10.0" />
 
-    <file src="ImageCropperLib/bin/Release/net8.0-android/ImageCropperLib.dll" target="lib/net8.0-android34.0" />
-    <file src="ImageCropperLib/bin/Release/net8.0-android/MauiBinding_AndroidImageCropper.dll" target="lib/net8.0-android34.0" />
+    <file src="ImageCropperLib/bin/Release/net10.0-android/ImageCropperLib.dll" target="lib/net10.0-android" />
+    <file src="ImageCropperLib/bin/Release/net10.0-android/MauiBinding_AndroidImageCropper.dll" target="lib/net10.0-android" />
 
-    <file src="ImageCropperLib/bin/Release/net8.0-ios/ImageCropperLib.dll" target="lib/net8.0-ios17.2" />
-    <file src="ImageCropperLib/bin/Release/net8.0-ios/TOCropViewController.dll" target="lib/net8.0-ios17.2" />
+    <file src="ImageCropperLib/bin/Release/net10.0-ios/ImageCropperLib.dll" target="lib/net10.0-ios" />
+    <file src="ImageCropperLib/bin/Release/net10.0-ios/TOCropViewController.dll" target="lib/net10.0-ios" />
   </files>
 </package>
